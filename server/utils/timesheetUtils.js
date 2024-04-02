@@ -30,7 +30,6 @@ async function RetreiveProjectName(projects) {
         }
     }
 
-    console.log(formattedProjectNames);
     return formattedProjectNames;
 }
 

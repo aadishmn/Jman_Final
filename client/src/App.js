@@ -12,18 +12,30 @@ import ResetPassword from "./components/ResetPassword"
 import AddProject from "./pages/addProject";
 import AllocateProject from "./pages/allocateProject";
 import TimeSheetParent from "./pages/Timesheet";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const[flag,setFlag]=useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const handleLogin = (userData) => {
     const { token, isAdmin } = userData;
-    setIsAuthenticated(true);
+    if(token || flag==false){
+      if(localStorage.getItem('token')){
+      setIsAuthenticated(true);
+      }
+
+    }
+    else{
+      setIsAuthenticated(false);
+
+    }
     setIsAdmin(isAdmin);
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('token'); // Remove token from local storage
     setIsAuthenticated(false);
     setIsAdmin(false);
   };
@@ -43,10 +55,10 @@ const App = () => {
           <Route path="/signup" element={<Navigate to="/home" />} />
         )}
         {isAdmin && <Route path="/home" element={<Home isAdmin={isAdmin} />} />}
-        <Route path="/changePassword/:id" element={<ConfirmPass />} />
+        <Route path="/confirmpass/:id" element={<ConfirmPass />} />
 
         <Route path="/resetPassword" element={<ResetPassword />}/>
-        <Route path="/create_user" element={<AddProject />}/>
+        <Route path="/create_project" element={<AddProject />}/>
         <Route path="/allocate_project" element={<AllocateProject />}/>
         <Route path="/timesheet" element={<TimeSheetParent />}/>
       </Routes>

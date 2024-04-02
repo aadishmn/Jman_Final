@@ -1,5 +1,3 @@
-// LoginForm.js
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'; 
 import axios from 'axios';
@@ -11,16 +9,10 @@ const LoginForm = ({ handleLogin }) => {
   const [error, setError] = useState('');
   const navigate = useNavigate(); // Access the navigate function
 
-  const handleForgotPassword = () => {
-    navigate('/resetPassword'); // Navigate to the reset password page
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/login', { email, password });
-    console.log(response)
-
       const { token, isAdmin, id, hasChanged } = response.data;
 
       localStorage.setItem('token', token); 
@@ -39,20 +31,32 @@ const LoginForm = ({ handleLogin }) => {
   };
 
   return (
-    <>
-      <div className="background-image"></div>
-      <div className="overlay"></div>
-      <div className="loginFormContainer">
-        <form className="loginForm" onSubmit={handleSubmit}>
-          {error && <div className="error">{error}</div>}
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <button type="button" onClick={handleForgotPassword}>Forgot Password</button>
-          <button type="submit">Login</button>
-          <Link to="/signup">Sign Up</Link>
-        </form>
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card bg-purple">
+            <div className="card-body">
+              <h3 className="card-title text-center mb-4">Login</h3>
+              {error && <div className="alert alert-danger">{error}</div>}
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="inputEmail" className="form-label">Email address</label>
+                  <input type="email" className="form-control" id="inputEmail" placeholder="Enter email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="inputPassword" className="form-label">Password</label>
+                  <input type="password" className="form-control" id="inputPassword" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                </div>
+                <button type="submit" id="logbtn"className=" btn w-100">Login</button>
+              </form>
+              <div className="text-center mt-3">
+                <Link to="/signup">Sign Up</Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
 

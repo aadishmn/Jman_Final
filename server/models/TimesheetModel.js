@@ -1,4 +1,8 @@
+// Define Timesheet Schema
+
 const mongoose = require('mongoose');
+
+
 const timesheetSchema = new mongoose.Schema({
     UID:{
       type: String,
@@ -63,5 +67,4 @@ const timesheetSchema = new mongoose.Schema({
       default:true
     }
   });
-  
   module.exports = mongoose.model('timesheets', timesheetSchema);

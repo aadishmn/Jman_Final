@@ -48,7 +48,6 @@ const create_project = async (req, res) => {
 const allocate_project = async (req, res) => {
     try {   
         const { PID, email, allocation_start, allocation_end } = req.body;
-        console.log(req.body);
         // if (req.user && req.user.role === "admin") {
             const newProj = new ProjectAllocate({
                 PID: PID,
@@ -60,7 +59,6 @@ const allocate_project = async (req, res) => {
                 
                 try {
                 const result = await newProj.save();
-                console.log(result);
                 
                 } catch (error) {
                 console.error(error);
@@ -88,7 +86,6 @@ const getUsersProjects = async (req, res) => {
                 users: Users.map(user => ({ email: user.email, name: user.firstName })),
                 projects: Projects.map(project => ({ PID: project.PID, name: project.name }))
               };
-            console.log(formattedData)
             res.json(formattedData);
 
         // } else {

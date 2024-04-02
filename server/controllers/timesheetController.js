@@ -1,16 +1,13 @@
-const { 
-    projectAssignmentModel
-   } = require('../models/ProjectAllocate');
+const timesheetModel=require('../models/TimesheetModel')
+const projectAssignmentModel=require('../models/ProjectAllocate')
+const {ConvertTimesheetFormat,RetreiveProjectName} = require('../utils/timesheetUtils')
 
-const timesheetModel =require('../models/timesheetModal')
-
-const {ConvertTimesheetFormat,RetreiveProjectName} = require('../utils/timesheet_utils')
 
 const RertreiveTimesheetPerWeek = async (req,res) => {
     try {
 
 
-        const user = req.user.email;
+        const user = req.data.email;
         const { startPeriod , endPeriod } = req.body;
         const timeSheetdata = await timesheetModel.find({
             email:user,
@@ -57,10 +54,11 @@ const RertreiveTimesheetPerWeek = async (req,res) => {
     }
 }
 
+
 const RetreiveUserProject = async (req,res) => {
     try {
         const userproject = await projectAssignmentModel.find({
-            email:req.user.email
+            email:req.data.email
         });
 
     
@@ -77,6 +75,7 @@ const RetreiveUserProject = async (req,res) => {
         res.json({"message": "unable to retreive project data"});
     }
 }
+
 
 const CreateUpdateTimesheets = async (req, res) => {
     try {
@@ -103,6 +102,7 @@ const CreateUpdateTimesheets = async (req, res) => {
             } else {
                 // If the timesheet entry doesn't exist, create a new one
                 const newTimesheet = new timesheetModel(value);
+                console.log(newTimesheet)
                 await newTimesheet.save();
                 console.log(`New timesheet entry created for UID ${value.UID}`);
             }
@@ -120,4 +120,5 @@ module.exports ={
     RertreiveTimesheetPerWeek,
     RetreiveUserProject,
     CreateUpdateTimesheets
+   
 }

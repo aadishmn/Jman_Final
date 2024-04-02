@@ -1,5 +1,3 @@
-// Home.js
-
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -19,9 +17,13 @@ const Home = ({ isAdmin }) => {
   };
 
   return (
-    <div>
+    <div className="container mt-5">
       <h1>Welcome to the Home Page!</h1>
-      {isAdmin && <button onClick={handleNewUserRegistration}>Register New User</button>}
+      {isAdmin && (
+        <button onClick={handleNewUserRegistration} className="btn btn-primary mt-3">
+          Register New User
+        </button>
+      )}
     </div>
   );
 };

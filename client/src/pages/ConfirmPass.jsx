@@ -1,9 +1,7 @@
-// ConfirmPass.js
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import "./ChangePassword.css";
+import "../styles/ConfirmPass.css"; // Import ConfirmPass.css
 
 const ConfirmPass = () => {
   const navigate = useNavigate();
@@ -38,13 +36,14 @@ const ConfirmPass = () => {
   return (
     <div>
       <div className="formCard">
-        <form className="changePassForm">
+        <form className="changePassForm" onSubmit={handleChangePassword}>
           <input
             type="password"
             placeholder="Enter New Password"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
+            className="form-control" // Added Bootstrap class
           />
           <br />
           <input
@@ -53,10 +52,11 @@ const ConfirmPass = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className="form-control" // Added Bootstrap class
           />
           <br />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button onClick={handleChangePassword}>Update Password</button>
+          <button type="submit" id="confirmbtn" className="btn">Update Password</button> {/* Added Bootstrap classes */}
         </form>
       </div>
     </div>

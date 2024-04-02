@@ -1,0 +1,25 @@
+/* styles.css */
+
+/* Custom styles for input fields */
+
+  .input-field:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  
+  .main {
+    width: 100%; /* Adjust as needed */
+    margin: 0 auto; /* Center container horizontally */
+    overflow-x: auto; /* Enable horizontal scrolling */
+  }
+  .plusbtn {
+    background-color: #64338b;
+    color: #fff;
+  }
+  
+  .minusbtn {
+    background-color: #bd2130;
+    color: #fff;
+
+  }

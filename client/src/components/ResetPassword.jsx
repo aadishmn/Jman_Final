@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import "../styles/ResetPassword.css";
 
 const ResetPassword = () => {
   const [email, setEmail] = useState("");
@@ -22,23 +23,24 @@ const ResetPassword = () => {
   };
 
   return (
-    <div>
-      <h2>Forgot Password</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="reset-password-container">
+      <h2 className="reset-password-title">Forgot Password</h2>
+      <form className="reset-password-form" onSubmit={handleSubmit}>
         {error && <div className="error">{error}</div>}
         {message && <div className="message">{message}</div>}
-        <div>
-          <label>Email:</label>
+        <div className="form-group">
+          <label className="form-label">Email:</label>
           <input
             type="email"
+            className="form-control"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" id="resetbtn"  className="btn btn-primary">Submit</button>
       </form>
-      <Link to="/login">Back to Login</Link>
+      <Link to="/login" id="resetbtn" className="back-to-login-link">Back to Login</Link>
     </div>
   );
 };

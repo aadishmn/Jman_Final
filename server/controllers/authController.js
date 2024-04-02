@@ -10,7 +10,6 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     const user = await User.findOne({ email });
-    // console.log(user.hasChanged)
 
     if(user.hasChanged==false){
       return res.status(401).json({ message: 'change new pasword' });
@@ -23,7 +22,7 @@ const login = async (req, res) => {
   }
     
 
-    const token = jwt.sign({ userId: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
+    const token = jwt.sign({ userId: user._id,email:user.email, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
     res.json({ token, isAdmin: user.isAdmin,id:user._id,hasChanged:user.hasChanged }); 
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' });
@@ -106,7 +105,6 @@ const forgot_password = async (req, res) => {
   const { email } = req.body;
   try {
     const user = await User.findOne({ email });
-    console.log(user)
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

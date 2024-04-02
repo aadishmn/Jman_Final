@@ -1,37 +1,30 @@
+/* Navbar.css */
+
 .navbar {
-    background-color: #333;
-    color: #fff;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-decoration: none;
-  }
-  
-  .navbar-nav {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-  }
-  
-  .nav-item {
-    margin-right: 10px;
-  }
-  
-  .nav-link {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .nav-link:hover {
-    background-color: #555;
-  }
-  
+  background-color: #6a0dad; /* Purple color */
+}
+
+.navbar-brand {
+  color: #fff; /* White color */
+  font-size: 1.5rem; /* Larger font size */
+  font-weight: bold; /* Bold font weight */
+}
+
+.nav-link {
+  color: #fff; /* White color */
+  font-weight: bold; /* Bold font weight */
+  margin-right: 15px; /* Add some margin between links */
+}
+
+.nav-link:hover {
+  color: #eee; /* Lighter shade of white for hover */
+}
+
+.navbar-toggler-icon {
+  color: #fff; /* White color */
+}
+
+.nav-item {
+  display: flex;
+  align-items: center; /* Align items vertically */
+}

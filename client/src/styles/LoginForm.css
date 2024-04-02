@@ -1,66 +1,26 @@
-/* LoginForm.css */
-
-/* Page styles */
-body {
-    margin: 0;
-    padding: 0;
-    /* background-image: url('https://www.shutterstock.com/shutterstock/photos/1794130912/display_1500/stock-photo-login-and-password-cyber-security-concept-data-protection-and-secured-internet-access-1794130912.jpg'); */
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, sans-serif; /* Add a suitable font-family */
-    opacity: 0.8; /* Increase opacity of the background image */
-    overflow: hidden; /* Hide any overflow to prevent scrollbars */
+.login-container {
+  background-color: #6937ff;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Container styles */
-.loginFormContainer {
-    width: 100vw; /* Use viewport width */
-    height: 100vh; /* Use viewport height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.form-label {
+  color: #fff;
 }
 
-/* Form styles */
-.loginForm {
-    width: 80%; /* Adjust width as needed */
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff; /* Set to solid white color */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow for a 3D effect */
+#logbtn {
+  background-color: #ab47bc; /* Purple */
+  /* border-color: #6937ff; */
+  color:#fff
 }
 
-/* Error message styles */
-.error {
-    color: red;
-    margin-bottom: 10px;
+#logbtn:hover {
+  background-color: #7b1fa2; /* Darker shade of purple on hover */
+  /* border-color: #542ee5; */
 }
 
-/* Input field styles */
-input[type="email"],
-input[type="password"] {
-    width: calc(100% - 22px); /* Adjust width to account for padding and border */
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-/* Button styles */
-button[type="submit"] {
-    width: 100%; /* Make button full width */
-    padding: 15px; /* Increase padding for larger size */
-    margin-top: 15px; /* Add margin to separate from inputs */
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: #fff;
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3;
+.alert {
+  margin-bottom: 20px;
 }
