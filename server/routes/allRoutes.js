@@ -6,7 +6,7 @@ const authUtils=require('../utils/authUtils')
 const AuthControllers = require('../controllers/authController');
 const ProjectControllers = require('../controllers/projectController')
 const TimesheetControllers=require('../controllers/timesheetController')
-
+const Feedback=require("../controllers/feedbackController")
 //main apis
 router.post('/login',AuthControllers.login);
 router.post('/signup',authUtils.authenticateJWT,AuthControllers.register);
@@ -18,5 +18,6 @@ router.get('/getUsersProjects',authUtils.authenticateJWT,ProjectControllers.getU
 router.post('/getTimesheetData',authUtils.authenticateJWT,TimesheetControllers.RertreiveTimesheetPerWeek)
 router.get('/getUserProject',authUtils.authenticateJWT,TimesheetControllers.RetreiveUserProject)
 router.post('/CreateUpdateTimesheets',authUtils.authenticateJWT,TimesheetControllers.CreateUpdateTimesheets)
+router.post('/feedback/CreateFeedback',authUtils.authenticateJWT,Feedback.CreateFeedbackEntry)
 
 module.exports = router;

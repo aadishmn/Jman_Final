@@ -20,7 +20,7 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
     console.log('Connected to MongoDB');
     // Start the server
     app.listen(process.env.PORT || 3001, () => {
-      console.log('Server is running on port 3001');
+      console.log('Server is running on port 5000');
     });
   })
   .catch((error) => {

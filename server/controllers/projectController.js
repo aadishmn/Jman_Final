@@ -84,7 +84,7 @@ const getUsersProjects = async (req, res) => {
             const formattedData = {
                 message: "data received!",
                 users: Users.map(user => ({ email: user.email, name: user.firstName })),
-                projects: Projects.map(project => ({ PID: project.PID, name: project.name }))
+                projects: Projects.map(project => ({ PID: project.PID, name: project.name,start:project.start,end:project.end}))
               };
             res.json(formattedData);
 

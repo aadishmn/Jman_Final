@@ -12,6 +12,7 @@ import ResetPassword from "./components/ResetPassword"
 import AddProject from "./pages/addProject";
 import AllocateProject from "./pages/allocateProject";
 import TimeSheetParent from "./pages/Timesheet";
+import Feedback from "./pages/Feedback";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -61,6 +62,8 @@ const App = () => {
         <Route path="/create_project" element={<AddProject />}/>
         <Route path="/allocate_project" element={<AllocateProject />}/>
         <Route path="/timesheet" element={<TimeSheetParent />}/>
+        <Route path="/feedback" element={ <Feedback />}/>
+
       </Routes>
     </Router>
   );

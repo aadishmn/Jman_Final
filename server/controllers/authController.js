@@ -22,15 +22,15 @@ const login = async (req, res) => {
   }
     
 
-    const token = jwt.sign({ userId: user._id,email:user.email, isAdmin: user.isAdmin }, process.env.JWT_SECRET);
-    res.json({ token, isAdmin: user.isAdmin,id:user._id,hasChanged:user.hasChanged }); 
+    const token = jwt.sign({ userId: user._id,email:user.email, isAdmin: user.isAdmin,role:user.role  }, process.env.JWT_SECRET);
+    res.json({ token, isAdmin: user.isAdmin,id:user._id,hasChanged:user.hasChanged,role:user.role }); 
   } catch (error) {
     res.status(500).json({ message: 'Internal server error' });
   }
 };
 
 const register = async (req, res) => {
-  const { firstName, lastName, email, password } = req.body;
+  const { firstName, lastName, email, password ,role} = req.body;
 
   try {
     const existingUser = await User.findOne({ email });
@@ -44,6 +44,7 @@ const register = async (req, res) => {
       lastName,
       email,
       password: password,
+      role,
       hasChanged:false,
       // isAdmin: false // Set isAdmin based on the authenticated user
     });

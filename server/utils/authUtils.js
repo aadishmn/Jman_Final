@@ -9,7 +9,7 @@ const authenticateJWT = (req, res, next) => {
         if (err) {
           res.status(401).send('Invalid token');
         } else {
-          req.data = decoded; // Attach decoded user data to the request
+          req.data = decoded; 
           next();
         }
       });

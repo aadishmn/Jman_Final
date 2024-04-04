@@ -13,10 +13,11 @@ const LoginForm = ({ handleLogin }) => {
     e.preventDefault();
     try {
       const response = await axios.post('http://localhost:5000/api/login', { email, password });
-      const { token, isAdmin, id, hasChanged } = response.data;
+      const { token, isAdmin, id, hasChanged,role } = response.data;
 
       localStorage.setItem('token', token); 
       localStorage.setItem('id', id); 
+      localStorage.setItem('role',role); 
 
       handleLogin({ token, isAdmin });
       // Check if user has changed password

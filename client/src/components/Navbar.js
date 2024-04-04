@@ -39,7 +39,13 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
             </li>
             <li className="nav-item">
               <Link to="/timesheet" className="nav-link">
-                About
+                Timesheet
+              </Link>
+            </li>
+
+            <li className="nav-item">
+              <Link to="/feedback" className="nav-link">
+                Feedback
               </Link>
             </li>
             {isAuthenticated && isAdmin && (

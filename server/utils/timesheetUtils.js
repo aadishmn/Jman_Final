@@ -18,7 +18,7 @@ async function RetreiveProjectName(projects) {
             const PID =  projects[i].PID;
             const project = await projectModel.findOne({ PID: PID });
             if (project) {
-                formattedProjectNames.push({PID:PID,name:project.name});
+                formattedProjectNames.push({PID:PID,name:project.name,start:project.start,end:project.end});
             } else {
                 // Handle case where project with given PID is not found
                 formattedProjectNames.push({PID:"not found"});

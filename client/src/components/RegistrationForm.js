@@ -8,6 +8,8 @@ const RegistrationForm = () => {
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [role, setRole] = useState('');
+
   const [error, setError] = useState('');
 
   const handleSubmit = async (e) => {
@@ -48,6 +50,9 @@ const RegistrationForm = () => {
                 <div className="mb-3">
                   <input type="password" className="form-control" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </div>
+                <div className='mb-3'>
+              <input type='text' value={role} onChange={(e) => setRole(e.target.value)}  className="form-control"  placeholder='Enter Role' />
+            </div>
                 <button type="submit" id="regbtn"className="btn btn-primary w-100">Register</button>
               </form>
               <div className="text-center mt-3">
