@@ -121,8 +121,8 @@ const CreateUpdateTimesheets = async (req, res) => {
 const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "dhiyanesh7338942092@gmail.com",
-      pass: "srle egmw ikwz mzog",
+      user: "aadishnagarajan@gmail.com",
+      pass: "uken xfzb payx mzca",
     },
   });
 
@@ -157,7 +157,7 @@ const transporter = nodemailer.createTransport({
 //     });
 // });
 
-cron.schedule('0 10 * * 5', async () => {
+cron.schedule('*/30 * * * * *', async () => {
     // Get the start and end date for the current week (assuming the week starts on Sunday)
     const currentDate = new Date();
     const startDate = new Date(currentDate);
