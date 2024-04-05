@@ -37,6 +37,11 @@ const App = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token'); // Remove token from local storage
+    localStorage.removeItem('role'); // Remove token from local storage
+    localStorage.removeItem('id'); // Remove token from local storage
+    sessionStorage.removeItem('start_period'); // Remove token from local storage
+    sessionStorage.removeItem('end_period'); // Remove token from local storage
+    sessionStorage.removeItem('projectId_timesheet'); // Remove token from local storage
     setIsAuthenticated(false);
     setIsAdmin(false);
   };

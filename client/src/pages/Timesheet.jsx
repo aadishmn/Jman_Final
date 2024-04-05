@@ -125,6 +125,9 @@ function TimeSheetParent() {
 
         const handleSubmit = async (e) => {
             try {
+                const [id] = Object.keys(Timesheetdata);
+                const payload = Timesheetdata;
+                payload[id].flag = true;
                 const response = await fetch('http://localhost:5000/api/CreateUpdateTimesheets', {
                     method: 'POST',
                     headers: {
@@ -134,7 +137,6 @@ function TimeSheetParent() {
                     body: JSON.stringify(Timesheetdata),
                 });
                 
-                const [id] = Object.keys(Timesheetdata);
                 const start_period = Timesheetdata[id].start_period;
                 const end_period = Timesheetdata[id].end_period;
                 const projectId = Timesheetdata[id].projectId;

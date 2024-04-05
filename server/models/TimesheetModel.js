@@ -65,6 +65,10 @@ const timesheetSchema = new mongoose.Schema({
     visible:{
       type:Boolean,
       default:true
+    },  
+     flag:{
+      type:Boolean,
+      default:false
     }
   });
   module.exports = mongoose.model('timesheets', timesheetSchema);
