@@ -1,24 +1,25 @@
+/* Allocate_Project.css */
+
 .error-message {
-    color: red;
-  }
-  
-  .form-control {
-    width: 100%;
-  }
-  
-#allocatebtn{
-    background-color: #ab47bc; /* Purple */
-    border-color: #6a0dad; /* Purple color */
-  }
-  
+  color: red;
+}
+
+.form-control {
+  width: 100%;
+}
+
+#allocatebtn {
+  background-color: #ab47bc; /* Purple */
+  border-color: #6a0dad; /* Purple color */
+}
+
 #allocatebtn:hover {
-    background-color: #7b1fa2; /* Darker shade of purple on hover */
-    border-color: #542ee5; /* Darker shade of purple */
-  }
-  
-  .container {
-    max-width: 600px; /* Set maximum width for container */
-    margin: auto; /* Center align container */
-    padding: 20px; /* Add padding inside container */
-  }
-  
+  background-color: #7b1fa2; /* Darker shade of purple on hover */
+  border-color: #542ee5; /* Darker shade of purple */
+}
+
+.container {
+  max-width: 100%; /* Set maximum width for container */
+  margin: auto; /* Center align container */
+  padding: 20px; /* Add padding inside container */
+}

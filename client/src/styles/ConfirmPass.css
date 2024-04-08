@@ -1,52 +1,50 @@
 /* ConfirmPass.css */
 
-/* Form card styles */
-.formCard {
-    width: 80%;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f5f5f5;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Form styles */
-  .changePassForm {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Error message styles */
-  .error-message {
-    color: red;
-    margin-top: 10px;
-  }
-  
-  /* Button styles */
-  #confirmbtn {
-    width: 100%;
-    margin-top: 15px;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ab47bc; /* Purple */
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  #confirmbtn:hover {
-    background-color: #7b1fa2; /* Darker shade of purple on hover */
-  }
-  
-  /* Input field styles */
-  .form-control {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
+/* Container for centering */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+}
+
+/* Form card container */
+.form-card {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Form fields */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Error message */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+/* Submit button */
+#confirm-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Submit button hover effect */
+#confirm-btn:hover {
+  background-color: #0056b3;
+}

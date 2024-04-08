@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("https://img.freepik.com/free-vector/purple-pink-halftone-background-vector_53876-67278.jpg?w=740&t=st=1712422821~exp=1712423421~hmac=f02c5415b64dc582953274d5f9741ec1995728c056b7f8692a09ac426629d993");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}

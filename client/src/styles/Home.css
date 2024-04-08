@@ -1,0 +1,88 @@
+/* Home.css */
+
+/* Container styles */
+.home-container {
+  padding-top: 50px;
+  max-width: 1200px; /* Set maximum width for better responsiveness */
+  margin: 0 auto; /* Center the container */
+}
+
+.home-title {
+  color: aliceblue;
+  text-align: center; /* Center align the title */
+}
+
+/* Admin buttons */
+.admin-buttons {
+  display: flex;
+  justify-content: center; /* Center align the buttons */
+  margin-top: 20px;
+}
+
+/* Home cards styles */
+.home-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* Space between cards */
+}
+
+/* Card styles */
+.home-card {
+  width: calc(45% - 10px); /* Adjust card width */
+  margin-bottom: 20px;
+}
+
+/* Home.css */
+
+/* Project list styles */
+.project-list {
+  max-height: 85px; /* Set maximum height for the project list */
+  overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100%; /* Make the cards take full height */
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-heading {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text {
+  color: #666;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .home-card {
+    width: 100%; /* Make cards take full width on smaller screens */
+  }
+}

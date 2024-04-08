@@ -1,3 +1,5 @@
+// ConfirmPass.js
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -17,7 +19,9 @@ const ConfirmPass = () => {
     }
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/changepassword/${localStorage.getItem("id")}`,
+        `http://localhost:5000/api/changepassword/${localStorage.getItem(
+          "id"
+        )}`,
         { password: newPassword }
       );
       if (response.status === 200) {
@@ -34,8 +38,10 @@ const ConfirmPass = () => {
   };
 
   return (
-    <div>
-      <div className="formCard">
+    <div className="container">
+      {" "}
+      {/* Added container div */}
+      <div className="form-card">
         <form className="changePassForm" onSubmit={handleChangePassword}>
           <input
             type="password"
@@ -56,7 +62,10 @@ const ConfirmPass = () => {
           />
           <br />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
-          <button type="submit" id="confirmbtn" className="btn">Update Password</button> {/* Added Bootstrap classes */}
+          <button type="submit" id="confirm-btn" className="btn">
+            Update Password
+          </button>{" "}
+          {/* Added Bootstrap classes */}
         </form>
       </div>
     </div>

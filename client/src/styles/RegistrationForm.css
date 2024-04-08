@@ -1,81 +1,60 @@
-/* RegistrationForm.css */
+.registrationContainer {
+  height: 100%;
+}
 
-/* Page styles */
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #5f4b8b; /* Purple */
-    z-index: -1;
+.registrationForm {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.registrationCardBody {
+  display: flex;
+  align-items: center;
+}
+
+.registrationImage {
+  max-width: 100%;
+}
+
+.form-label {
+  color: #000;
+}
+
+#registerBtn {
+  background-color: #6937ff;
+  color: #fff;
+}
+
+#registerBtn:hover {
+  background-color: #542ee5;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.registrationFormCol {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (max-width: 992px) {
+  .registrationFormCol {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
-  
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
-    z-index: -1;
-  }
-  
-  /* Container styles */
-  .regFormContainer {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Form styles */
-  .regForm {
-    width: 80%;
-    max-width: 400px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #ffffff; /* White */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
-  }
-  
-  /* Error message styles */
-  .error {
-    color: red;
-    margin-bottom: 10px;
-  }
-  
-  /* Input field styles */
-  .form-control {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  /* Button styles */
-  #regbtn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #ab47bc; /* Purple */
-    color: #fff; /* White */
-    cursor: pointer;  
-  }
-  
-  #regbtn:hover {
-    background-color: #7b1fa2; /* Darker shade of purple on hover */
-  }
-  
-  /* Link styles */
-  .regForm a {
-    color: #5f4b8b; /* Purple */
-    text-decoration: none;
-  }
-  
-  .regForm a:hover {
-    text-decoration: underline;
-  }
-  
+}

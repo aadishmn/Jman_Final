@@ -13,7 +13,6 @@
   border-color: #007bff; /* Change the border color on focus */
 }
 
-
 .btn-purple {
   background-color: purple;
   color: white;
@@ -78,3 +77,39 @@
   background-color: #4a0780;
 }
 
+/* Timesheet.css */
+
+.container {
+  text-align: center;
+}
+
+.timesheet-title {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.date-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.date-navigation-btn {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+.date-range {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  white-space: nowrap; /* Ensures the date range stays on a single line */
+}
+
+.timesheet {
+  margin-top: 20px;
+}

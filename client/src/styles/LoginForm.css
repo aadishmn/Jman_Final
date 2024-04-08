@@ -1,26 +1,60 @@
-.login-container {
-  background-color: #6937ff;
-  height: 100vh;
+.loginContainer {
+  height: 100%;
+}
+
+.loginForm {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.loginCardBody {
   display: flex;
-  justify-content: center;
   align-items: center;
 }
 
+.loginImage {
+  max-width: 100%;
+}
+
 .form-label {
-  color: #fff;
+  color: #000;
 }
 
 #logbtn {
-  background-color: #ab47bc; /* Purple */
-  /* border-color: #6937ff; */
-  color:#fff
+  background-color: #6937ff;
+  color: #fff;
 }
 
 #logbtn:hover {
-  background-color: #7b1fa2; /* Darker shade of purple on hover */
-  /* border-color: #542ee5; */
+  background-color: #542ee5;
 }
 
 .alert {
-  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.row {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.loginFormCol {
+  flex: 0 0 50%;
+  max-width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (max-width: 992px) {
+  .loginFormCol {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
 }

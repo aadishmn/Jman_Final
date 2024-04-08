@@ -3,21 +3,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import logo from "../styles/Images/logo.png";
 
 const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
-  
-  
-  
-  
   const handleLogoutClick = () => {
     handleLogout(); // Call the handleLogout function passed from the parent component
   };
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-purple">
-      <div className="container-fluid"> {/* Updated container-fluid class */}
+      <div className="container-fluid">
         <Link to="/" className="navbar-brand">
-          My App
+          <img src={logo} alt="logo" className="navbar-logo" />
+          TimFeed
         </Link>
         <button
           className="navbar-toggler"
@@ -42,26 +40,33 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
                 Timesheet
               </Link>
             </li>
-
             <li className="nav-item">
               <Link to="/feedback" className="nav-link">
                 Feedback
               </Link>
             </li>
-            {isAuthenticated && isAdmin && (
-              <li className="nav-item">
-                <Link to="/signup" className="nav-link">
-                  Register
-                </Link>
-              </li>
+            {isAdmin && (
+              <React.Fragment>
+                <li className="nav-item">
+                  <Link to="/create_project" className="nav-link">
+                    Create Project
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/allocate_project" className="nav-link">
+                    Allocate Project
+                  </Link>
+                </li>{" "}
+                <li className="nav-item">
+                  <Link to="/signup" className="nav-link">
+                    Register
+                  </Link>
+                </li>
+              </React.Fragment>
             )}
             <li className="nav-item">
               {isAuthenticated ? (
-                <Link
-                  to="/"
-                  className="nav-link"
-                  onClick={handleLogoutClick}
-                >
+                <Link to="/" className="nav-link" onClick={handleLogoutClick}>
                   Logout
                 </Link>
               ) : (
