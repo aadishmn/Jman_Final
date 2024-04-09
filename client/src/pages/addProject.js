@@ -23,6 +23,10 @@ function AddProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Convert start and end dates to "dd-mm-yyyy" format
+      const formattedStart = formatDate(formData.start);
+      const formattedEnd = formatDate(formData.end);
+  
       const response = await fetch("http://localhost:5000/api/create_project", {
         method: "POST",
         headers: {
@@ -31,16 +35,18 @@ function AddProject() {
         },
         body: JSON.stringify({
           ...formData,
+          start: formattedStart,
+          end: formattedEnd,
         }),
       });
-
+  
       const res = await response.json();
       if (res.message !== "Project Added") {
         alert("Failed to add project");
       } else {
         alert("Project added successfully");
       }
-
+  
       setFormData({
         name: "",
         client_name: "",
@@ -52,7 +58,15 @@ function AddProject() {
       setErrorMessage(error.message);
     }
   };
-
+  
+  // Function to format date as "dd-mm-yyyy"
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const month = date.getMonth() + 1; // Months are zero based
+    const year = date.getFullYear();
+    return `${day}-${month}-${year}`;
+  };
   return (
     <div className="container">
       <h2 className="project-title" style={{ color: "white" }}>

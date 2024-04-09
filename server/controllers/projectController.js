@@ -18,15 +18,14 @@ const create_project = async (req, res) => {
     const newProj = new Project({
       PID: randomString,
       name: name,
-      start: start,
-      end: end,
+      start_date: start,
+      end_date: end,
       client_name: client_name,
       created_at: new Date(),
     });
 
     try {
       const result = await newProj.save();
-      console.log(result);
     } catch (error) {
       console.error(error);
     }
@@ -80,8 +79,8 @@ const getUsersProjects = async (req, res) => {
       projects: Projects.map((project) => ({
         PID: project.PID,
         name: project.name,
-        start: project.start,
-        end: project.end,
+        start_date: project.start,
+        end_date: project.end,
       })),
     };
     res.json(formattedData);

@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 const feedbackSchema = new Schema({
     email:{ type: String, required: true },
     role:{ type: String, required: true },
+    start_period: {
+      type: Date,
+      required: true
+    },
+    end_period: {
+      type: Date,
+      required: true
+    },
     q1:{ type: Number, required: true },
     q2:{ type: Number, required: true },
     q3:{ type: Number, required: true },
