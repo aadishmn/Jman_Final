@@ -237,9 +237,9 @@ const checkTimesheet = async (req, res) => {
       end_period: { $gte: startDate },
     });
     if (timesheet == null) {
-      res.json({ hasEnteredTimesheet: true });
-    } else {
       res.json({ hasEnteredTimesheet: false });
+    } else {
+      res.json({ hasEnteredTimesheet: true });
     }
   } catch (error) {
     console.error("Error checking timesheet:", error);
@@ -254,9 +254,9 @@ const checkFeedback = async (req, res) => {
     const feedback = await feedbackModel.findOne({ email: userEmail });
 
     if (feedback == null) {
-      res.json({ hasEnteredFeedback: true });
-    } else {
       res.json({ hasEnteredFeedback: false });
+    } else {
+      res.json({ hasEnteredFeedback: true });
     }
   } catch (error) {
     console.error("Error checking feedback:", error);

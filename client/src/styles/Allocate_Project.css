@@ -20,6 +20,6 @@
 
 .container {
   max-width: 100%; /* Set maximum width for container */
-  margin: auto; /* Center align container */
+  margin: auto; 
   padding: 20px; /* Add padding inside container */
 }

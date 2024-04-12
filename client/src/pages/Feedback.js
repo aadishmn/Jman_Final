@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Questions from "../Data/feedbackQues.json";
-
+import "../styles/Feedback.css"
 function Feedback() {
   const [accessToken, setToken] = useState(localStorage.getItem("token"));
   const [role, setRole] = useState(localStorage.getItem("role"));

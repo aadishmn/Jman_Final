@@ -36,11 +36,12 @@ const LoginForm = ({ handleLogin }) => {
   };
 
   return (
+    <div className="loginOut">
     <div className="loginContainer mt-5">
       <div className="loginSubContainer row justify-content-center">
         <div className="loginFormCol">
-          <div className="card loginCard  ">
-            <div className="card-body loginCardBody">
+          <div className="card loginCard ">
+            <div className="card-body loginCardBody" >
               <div className="col-md-6">
                 <img
                   src={loginImage}
@@ -88,6 +89,7 @@ const LoginForm = ({ handleLogin }) => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

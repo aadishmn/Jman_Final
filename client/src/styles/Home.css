@@ -1,88 +1,71 @@
-/* Home.css */
-
-/* Container styles */
 .home-container {
-  padding-top: 50px;
-  max-width: 1200px; /* Set maximum width for better responsiveness */
-  margin: 0 auto; /* Center the container */
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .home-title {
-  color: aliceblue;
-  text-align: center; /* Center align the title */
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
-
-/* Admin buttons */
+.home-content{
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
 .admin-buttons {
-  display: flex;
-  justify-content: center; /* Center align the buttons */
-  margin-top: 20px;
-}
-
-/* Home cards styles */
-.home-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between; /* Space between cards */
-}
-
-/* Card styles */
-.home-card {
-  width: calc(45% - 10px); /* Adjust card width */
   margin-bottom: 20px;
 }
 
-/* Home.css */
-
-/* Project list styles */
-.project-list {
-  max-height: 85px; /* Set maximum height for the project list */
-  overflow-y: auto; /* Add vertical scrollbar when content exceeds max-height */
+.home-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.card {
-  border-radius: 10px;
+.home-card {
+  flex: 1;
+  min-width: 250px;
+  margin: 10px;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  height: 100%; /* Make the cards take full height */
-}
-
-.card-body {
-  padding: 20px;
+  background-color: #fff;
 }
 
 .card-heading {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
   color: #333;
-  font-size: 1.2rem;
-  font-weight: bold;
 }
 
 .card-text {
-  color: #666;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #555;
 }
 
-/* Button styles */
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  font-size: 16px;
-  border-radius: 5px;
-  text-decoration: none;
-  cursor: pointer;
+.project-list {
+  margin-top: 20px;
 }
 
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
+.project-list h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  color: #333;
 }
 
-.btn-primary:hover {
-  background-color: #0056b3;
+.project-list p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #777;
 }
 
-/* Responsive styles */
-@media screen and (max-width: 768px) {
-  .home-card {
-    width: 100%; /* Make cards take full width on smaller screens */
-  }
+
+.homeImg{
+  height: 250px;
+  
+
 }

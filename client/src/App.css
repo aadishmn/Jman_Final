@@ -2,12 +2,20 @@
   margin: 0;
   padding: 0;
 }
-
-body {
-  background-image: url("https://img.freepik.com/free-vector/purple-pink-halftone-background-vector_53876-67278.jpg?w=740&t=st=1712422821~exp=1712423421~hmac=f02c5415b64dc582953274d5f9741ec1995728c056b7f8692a09ac426629d993");
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+html {
   margin: 0;
   padding: 0;
+}
+
+body {
+  background-image: url("https://img.freepik.com/free-photo/liquid-purple-art-painting-abstract-colorful-background-with-color-splash-paints-modern-art_1258-103360.jpg?t=st=1712924846~exp=1712928446~hmac=737ce15a713a4ded402585f90212270ffeb74e97dd64b545d0bbb9f16e12e383&w=900");
+  background-size: cover;
+  background-position: center;
+  height: 100%; 
+  margin: 0;
+  padding: 0;
+  max-width: 100vw;
+  background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
 }
