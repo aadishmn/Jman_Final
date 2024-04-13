@@ -80,7 +80,7 @@ function TimeSheetParent() {
           setTimesheetdata(data.payload);
           const [temp] = Object.keys(data.payload);
           // const payloadArray = data.payload[temp];
-          if (data.payload[temp].flag === true) navigate("/feedback");
+          // if (data.payload[temp].flag === true) navigate("/feedback");
 
           console.log(temp);
           setCheckFlag(data.payload[temp].flag);
@@ -530,25 +530,23 @@ function TimeSheetParent() {
                       <div key={index}>
                         <p>
                           Project Start Date:{" "}
-                          {new Date(Assignedproject.start).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "2-digit",
-                              day: "2-digit",
-                            }
-                          )}
+                          {new Date(
+                            Assignedproject.allocation_start
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          })}
                         </p>
                         <p>
                           Project End Date:{" "}
-                          {new Date(Assignedproject.end).toLocaleDateString(
-                            "en-US",
-                            {
-                              year: "numeric",
-                              month: "2-digit",
-                              day: "2-digit",
-                            }
-                          )}
+                          {new Date(
+                            Assignedproject.allocation_end
+                          ).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "2-digit",
+                            day: "2-digit",
+                          })}
                         </p>
                       </div>
                     );

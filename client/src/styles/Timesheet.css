@@ -95,7 +95,7 @@
   margin-bottom: 20px;
 }
 
-.date-navigation-btn {
+.date-navigation > .date-navigation-btn {
   color: white;
   font-size: 18px;
   font-weight: bold;

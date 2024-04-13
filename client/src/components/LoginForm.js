@@ -18,17 +18,17 @@ const LoginForm = ({ handleLogin }) => {
         password,
       });
       const { token, isAdmin, id, hasChanged, role } = response.data;
-
+      console.log(response.data);
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       localStorage.setItem("role", role);
 
       handleLogin({ token, isAdmin });
       // Check if user has changed password
-      if (hasChanged) {
-        navigate("/"); // Navigate to home page if password has been changed
-      } else {
+      if (hasChanged === false) {
         navigate(`/changepassword/${id}`); // Navigate to change password page if password hasn't been changed
+      } else {
+        navigate("/"); // Navigate to home page if password has been changed
       }
     } catch (error) {
       setError("Login failed");
@@ -36,12 +36,11 @@ const LoginForm = ({ handleLogin }) => {
   };
 
   return (
-    <div className="loginOut">
     <div className="loginContainer mt-5">
       <div className="loginSubContainer row justify-content-center">
         <div className="loginFormCol">
           <div className="card loginCard ">
-            <div className="card-body loginCardBody" >
+            <div className="card-body loginCardBody">
               <div className="col-md-6">
                 <img
                   src={loginImage}
@@ -49,11 +48,11 @@ const LoginForm = ({ handleLogin }) => {
                   className="loginImage img-fluid"
                 />
               </div>
-              <div className="col-md-6">
+              <div className="loginFormContainer col-md-6">
                 <h3 className="card-title text-center mb-4">Login</h3>
                 {error && <div className="alert alert-danger">{error}</div>}
                 {/* Add the image near the form */}
-                <form onSubmit={handleSubmit}>
+                <form className="loginForm" onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="inputEmail" className="form-label">
                       Email address
@@ -89,7 +88,6 @@ const LoginForm = ({ handleLogin }) => {
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

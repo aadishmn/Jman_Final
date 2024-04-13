@@ -1,13 +1,17 @@
 .loginContainer {
   height: 100%;
+}
 
+.loginContainer .form-label {
+  color: #6937ff;
 }
-.loginOut{
-  width:100% ;
+.loginContainer .card-title {
+  color: #6937ff;
 }
+
 .loginForm {
   max-width: 600px;
-  /* margin: auto; */
+  margin: auto; /* Center the form horizontally */
   padding: 20px;
   border-radius: 10px;
 }
@@ -55,9 +59,14 @@
   padding-left: 15px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .loginFormCol {
     flex: 0 0 100%;
     max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .loginFormContainer {
+    width: 100%;
   }
 }

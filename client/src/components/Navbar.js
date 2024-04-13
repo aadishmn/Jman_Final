@@ -3,6 +3,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
+import { FaBars } from "react-icons/fa"; // Import the FaBars icon
+
 import logo from "../styles/Images/logo.png";
 
 const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
@@ -26,7 +28,7 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon"></span>
+          <FaBars /> {/* Use the FaBars icon component */}
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -66,7 +68,11 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
             )}
             <li className="nav-item">
               {isAuthenticated ? (
-                <Link to="/" className="nav-link" onClick={handleLogoutClick}>
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={handleLogoutClick}
+                >
                   Logout
                 </Link>
               ) : (

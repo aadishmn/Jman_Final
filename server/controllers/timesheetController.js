@@ -1,5 +1,6 @@
 const timesheetModel = require("../models/TimesheetModel");
 const user = require("../models/User");
+const project = require("../models/Project");
 const projectAssignmentModel = require("../models/ProjectAllocate");
 const feedbackModel = require("../models/feedback");
 const {
@@ -11,15 +12,18 @@ const nodemailer = require("nodemailer");
 
 const RertreiveTimesheetPerWeek = async (req, res) => {
   try {
-    const user = req.data.email;
+    const userEmail = req.data.email; // Corrected variable name
+    console.log(userEmail); // Corrected variable name
     const { startPeriod, endPeriod } = req.body;
+    console.log(req.body);
     const timeSheetdata = await timesheetModel.find({
-      email: user,
+      email: userEmail, // Corrected variable name
       start_period: startPeriod,
       end_period: endPeriod,
       visible: true,
     });
 
+    console.log(timeSheetdata);
     if (timeSheetdata.length !== 0) {
       res.json({
         message: "Timesheet data sent",
@@ -28,7 +32,7 @@ const RertreiveTimesheetPerWeek = async (req, res) => {
     } else {
       const newTimeSheet = new timesheetModel({
         UID: Math.floor(100000 + Math.random() * 900000).toString(),
-        email: user,
+        email: userEmail, // Corrected variable name
         PID: "", // Assuming PID is empty initially
         activity: "",
         comments: "",
@@ -46,7 +50,6 @@ const RertreiveTimesheetPerWeek = async (req, res) => {
 
       try {
         const result = await newTimeSheet.save();
-        console.log(result);
         res.json({
           message: "Timesheet data sent",
           payload: ConvertTimesheetFormat([result]),
@@ -57,30 +60,51 @@ const RertreiveTimesheetPerWeek = async (req, res) => {
     }
   } catch (error) {
     console.log(error);
-    res.json({ message: "unable to retreive timesheet data" });
+    res.json({ message: "unable to retrieve timesheet data" });
   }
 };
 
 const RetreiveUserProject = async (req, res) => {
   try {
-    const userproject = await projectAssignmentModel.find({
-      email: req.data.email,
+    const userEmail = req.data.email;
+
+    // Retrieve projects assigned to the user
+    const userProjects = await projectAssignmentModel.find({
+      email: userEmail,
     });
 
-    if (userproject.length !== 0) {
+    if (userProjects.length !== 0) {
+      // Extract the PID values
+      const PIDs = userProjects.map((project) => project.PID);
+
+      // Retrieve project names using the PIDs
+      const projects = await project.find({ PID: { $in: PIDs } });
+
+      // Create an object mapping PID to project name
+      const projectMap = {};
+      projects.forEach((project) => {
+        projectMap[project.PID] = project.name;
+      });
+
+      // Replace PID with project name in userProjects
+      const userProjectsWithName = userProjects.map((project) => ({
+        ...project.toObject(),
+        name: projectMap[project.PID],
+      }));
       res.json({
-        message: "Project sent",
-        payload: await RetreiveProjectName(userproject),
+        message: "Projects sent",
+        payload: userProjectsWithName,
       });
     } else {
+      // If no projects found for the user, return a default project
       res.json({
-        message: "Project sent",
+        message: "Projects sent",
         payload: [{ PID: "0", name: "bench" }],
       });
     }
-  } catch {
+  } catch (error) {
     console.log(error);
-    res.json({ message: "unable to retreive project data" });
+    res.json({ message: "Unable to retrieve project data" });
   }
 };
 
@@ -112,7 +136,6 @@ const CreateUpdateTimesheets = async (req, res) => {
       } else {
         // If the timesheet entry doesn't exist, create a new one
         const newTimesheet = new timesheetModel(value);
-        console.log(newTimesheet);
         await newTimesheet.save();
         console.log(`New timesheet entry created for UID ${value.UID}`);
       }
@@ -250,7 +273,6 @@ const checkTimesheet = async (req, res) => {
 const checkFeedback = async (req, res) => {
   try {
     const userEmail = req.data.email;
-    console.log(userEmail); // Assuming user email is stored in req.user.email after authentication
     const feedback = await feedbackModel.findOne({ email: userEmail });
 
     if (feedback == null) {

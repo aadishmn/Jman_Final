@@ -14,7 +14,7 @@ const AllocateProject = () => {
     const getUsersProjects = async () => {
       try {
         const response = await fetch(
-          "http://localhost:5000/api/getUsersProjects",
+          "http://localhost:5000/api/getUsersProjectsAllocation",
           {
             method: "GET",
             headers: {
@@ -27,6 +27,7 @@ const AllocateProject = () => {
         const responseData = await response.json();
         if (response.ok) {
           setData(responseData);
+          console.log(responseData);
         } else {
           throw new Error(responseData.message || "Failed to fetch projects");
         }

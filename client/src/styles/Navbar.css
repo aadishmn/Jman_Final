@@ -19,16 +19,21 @@
 /* Toggle Button */
 .navbar-toggler {
   border: none; /* Remove border */
+  color: #ffffff; /* Set toggle button color */
 }
 
 .navbar-toggler:focus {
   outline: none; /* Remove outline */
 }
 
+/* Navbar Toggle Icon Color */
+.navbar-toggler-icon {
+  background-color: #ffffff; /* Toggle icon color */
+}
+
 /* Navbar Background */
 .navbar {
-  background-color: #9221d8; 
-
+  background-color: #9221d8;
 }
 
 /* Container Fluid */

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import LoginForm from "./components/LoginForm";
 import Home from "./pages/home";
 import Navbar from "./components/Navbar";
@@ -32,16 +37,25 @@ const App = () => {
     sessionStorage.removeItem("projectId_timesheet");
     setIsAuthenticated(false);
     setIsAdmin(false);
+    // You can directly use the Navigate component here
+    return <Navigate to="/login" />;
   };
 
   return (
     <Router>
-      <Navbar isAuthenticated={isAuthenticated} isAdmin={isAdmin} handleLogout={handleLogout} />
+      <Navbar
+        isAuthenticated={isAuthenticated}
+        isAdmin={isAdmin}
+        handleLogout={handleLogout}
+      />
       <Routes>
-        <Route path="/login" element={<LoginForm handleLogin={handleLogin} />} />
-        <Route path="/signup" element={isAdmin ? <RegistrationForm /> : <Navigate to="/home" />} />
+        <Route
+          path="/login"
+          element={<LoginForm handleLogin={handleLogin} />}
+        />
+        <Route path="/signup" element={<SignupRedirect isAdmin={isAdmin} />} />
         <Route path="/" element={<Home isAdmin={isAdmin} />} />
-        <Route path="/confirmpass/:id" element={<ConfirmPass />} />
+        <Route path="/changepassword/:id" element={<ConfirmPass />} />
         <Route path="/resetPassword" element={<ResetPassword />} />
         <Route path="/create_project" element={<AddProject />} />
         <Route path="/allocate_project" element={<AllocateProject />} />
@@ -50,6 +64,10 @@ const App = () => {
       </Routes>
     </Router>
   );
+};
+
+const SignupRedirect = ({ isAdmin }) => {
+  return isAdmin ? <RegistrationForm /> : <Navigate to="/home" />;
 };
 
 export default App;

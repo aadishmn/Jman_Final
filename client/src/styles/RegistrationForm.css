@@ -2,6 +2,13 @@
   height: 100%;
 }
 
+.registrationContainer .form-label {
+  color: #6937ff;
+}
+.registrationContainer .card-title {
+  color: #6937ff;
+}
+
 .registrationForm {
   max-width: 600px;
   margin: auto;
@@ -52,9 +59,15 @@
   padding-left: 15px;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .registrationFormCol {
     flex: 0 0 100%;
     max-width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+  }
+
+  .regFormContainer {
+    width: 100%;
   }
 }

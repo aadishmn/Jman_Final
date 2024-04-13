@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { FaCheckCircle, FaTimesCircle } from "react-icons/fa";
+import { Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "../styles/Home.css";
-import butterfly from "../styles/Images/butterfly.png"
+import butterfly from "../styles/Images/butterfly.png";
+
 const Home = ({ isAdmin }) => {
-  const navigate = useNavigate(); // Access the navigate function
+  const navigate = useNavigate();
 
   const [assignedProjectsCount, setAssignedProjectsCount] = useState(0);
   const [assignedProjects, setAssignedProjects] = useState([]);
   const [hasEnteredTimesheet, setHasEnteredTimesheet] = useState(false);
   const [hasEnteredFeedback, setHasEnteredFeedback] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [totalUsers, setTotalUsers] = useState(0);
+  const [activeProjects, setActiveProjects] = useState([]);
+  const [selectedUserId, setSelectedUserId] = useState(""); // State to store selected user ID
+  const [usersData, setUsersData] = useState([]); // State to store users data as an array
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    setIsLoggedIn(!!token); // Check if token exists
+    setIsLoggedIn(!!token);
 
-    if (!token) return; // If no token, return and don't fetch data
+    if (!token) return;
 
-    // Fetch the number of assigned projects for the logged-in user
     const fetchAssignedProjectsCount = async () => {
       try {
         const response = await fetch(
@@ -92,88 +98,221 @@ const Home = ({ isAdmin }) => {
       }
     };
 
+    const fetchTotalUsers = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/totalUsers", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setTotalUsers(data.totalUsers);
+        } else {
+          console.error("Failed to fetch total number of users:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching total number of users:", error);
+      }
+    };
+
+    const fetchActiveProjects = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:5000/api/activeProjects"
+        );
+        const data = await response.json();
+        setActiveProjects(data);
+      } catch (error) {
+        console.error("Error fetching active projects:", error);
+      }
+    };
+    const fetchUsersData = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/api/users", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const data = await response.json();
+        if (response.ok) {
+          setUsersData(data); // Assuming data is an array of user objects
+        } else {
+          console.error("Failed to fetch users data:", data.message);
+        }
+      } catch (error) {
+        console.error("Error fetching users data:", error);
+      }
+    };
+
     fetchAssignedProjectsCount();
     fetchAssignedProjects();
     fetchFlagData();
+    fetchTotalUsers();
+    fetchActiveProjects();
+    fetchUsersData();
   }, []);
 
+  const handleUserSelect = (event) => {
+    setSelectedUserId(event.target.value);
+    // Any other logic you want to perform when a user is selected
+  };
+
   return (
-    <div className={`home-container ${isLoggedIn ? 'logged-in' : 'logged-out'}`}>
+    <div
+      className={`home-container ${isLoggedIn ? "logged-in" : "logged-out"}`}
+    >
       {isLoggedIn ? (
         <>
-          <h1 className="home-title">Welcome to the TimFeeder!</h1>
-
-          {/* Admin buttons */}
-          {/* {isAdmin && (
-            <div className="admin-buttons">
-              <Link to="/create_project" className="btn btn-primary mt-3 mr-2">
-                Create Project
-              </Link>
-              <Link to="/allocate_project" className="btn btn-primary mt-3">
-                Allocate Project
-              </Link>
-            </div>
-          )} */}
-
-          {/* Assigned Projects */}
-          <div className="home-cards-container mt-5">
-            {/* Assigned Projects Card */}
-            <div className="home-card project-card">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-heading">Assigned Projects</h5>
-                  <p className="card-text">
-                    Number of projects assigned to you: {assignedProjectsCount}
-                  </p>
-                  <div className="project-list">
-                    {assignedProjects.map((project, index) => (
-                      <div key={index}>
-                        <h3>{project.name}</h3>
-                        <p>
-                          {new Date(project.start_date).toLocaleDateString()} -{" "}
-                          {new Date(project.end_date).toLocaleDateString()}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            {/* Feedback and Timesheet Card */}
-            <div className="home-card feedback-card">
-              <div className="card">
-                <div className="card-body">
-                  <h5 className="card-heading">Feedback and Timesheet</h5>
-                  <p className="card-text">
-                    {hasEnteredTimesheet ? (
-                      <span>Timesheet Entered</span>
-                    ) : (
-                      <span>No Timesheet Entered</span>
-                    )}
-                  </p>
-                  <p className="card-text">
-                    {hasEnteredFeedback ? (
-                      <span>Feedback Entered</span>
-                    ) : (
-                      <span>No Feedback Entered</span>
-                    )}
-                  </p>
-              
-                </div>
-              </div>
-            </div>
-            {/* Add more cards as needed */}
-            <img className="homeImg" src={butterfly} alt="Illustration" />
-
-          </div>
+          {isAdmin ? (
+            <AdminHome
+              totalUsers={totalUsers}
+              activeProjects={activeProjects}
+              hasEnteredTimesheet={hasEnteredTimesheet}
+              hasEnteredFeedback={hasEnteredFeedback}
+              handleUserSelect={handleUserSelect}
+              usersData={usersData}
+            />
+          ) : (
+            <UserHome
+              assignedProjectsCount={assignedProjectsCount}
+              assignedProjects={assignedProjects}
+              hasEnteredTimesheet={hasEnteredTimesheet}
+              hasEnteredFeedback={hasEnteredFeedback}
+            />
+          )}
         </>
       ) : (
         <div>
-          <h1 className="home-title">Welcome to the TimFeeder!</h1>
-          <img className="homeImg" src={butterfly} alt="Illustration" />
+          <h1 className="home-title">Welcome to the TimFeeder!!!</h1>
           <p className="home-content">You need to login to proceed !!!</p>
         </div>
       )}
+    </div>
+  );
+};
+
+const AdminHome = ({
+  totalUsers,
+  activeProjects,
+  hasEnteredTimesheet,
+  hasEnteredFeedback,
+  handleUserSelect,
+  usersData,
+}) => {
+  const [selectedUserData, setSelectedUserData] = useState(null);
+
+  // Function to handle user selection
+  const handleUserSelectChange = (event) => {
+    const selectedUserId = event.target.value;
+    console.log(selectedUserId);
+    console.log(usersData);
+
+    const selectedUser = usersData.find(
+      (user) => user.email === selectedUserId
+    );
+    setSelectedUserData(selectedUser);
+    console.log(selectedUser);
+  };
+
+  return (
+    <div className="adminBody">
+      <h1 className="adminContent">Welcome Admin!</h1>
+      <Card>
+        <Card.Body>
+          <Card.Title>Total Users</Card.Title>
+          <Card.Text>{totalUsers}</Card.Text>
+        </Card.Body>
+      </Card>
+      <h2 className="adminContent">Active Projects</h2>
+      <div className="project-list">
+        {activeProjects.map((project) => (
+          <Card key={project._id} className="project-card">
+            <Card.Body>
+              <Card.Title>{project.name}</Card.Title>
+              <Card.Text>Client: {project.client_name}</Card.Text>
+              <Card.Text>Start Date: {project.start_date}</Card.Text>
+              <Card.Text>End Date: {project.end_date}</Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+      <div className="adminBody">
+        <h2 className="adminContent">Select User</h2>
+        <select onChange={handleUserSelectChange}>
+          <option value="">Select User</option>
+          {usersData.map((user) => (
+            <option key={user.id} value={user.id}>
+              {user.email}
+            </option>
+          ))}
+        </select>
+      </div>
+      {/* Display user's data based on selection */}
+      <div className="adminGetUser">
+        {selectedUserData && (
+          <div>
+            <h2>User Details</h2>
+            <p>Email: {selectedUserData.email}</p>
+            <p>
+              Name: {selectedUserData.firstName} {selectedUserData.lastName}
+            </p>
+            {/* Add more user details as needed */}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const UserHome = ({
+  assignedProjectsCount,
+  assignedProjects,
+  hasEnteredTimesheet,
+  hasEnteredFeedback,
+}) => {
+  return (
+    <div className="userBody">
+      <h1 className="userContent">Welcome User!</h1>
+      <Card className="assignedProjectsText">
+        <Card.Body>
+          <Card.Title>Number of projects assigned to you</Card.Title>
+          <Card.Text>{assignedProjectsCount}</Card.Text>
+        </Card.Body>
+      </Card>
+      <div className="project-list">
+        {assignedProjects.map((project, index) => (
+          <Card key={index} className="project-card">
+            <Card.Body>
+              <Card.Title>{project.name.toUpperCase()}</Card.Title>
+              <Card.Text>
+                {new Date(project.start_date).toLocaleDateString()} -{" "}
+                {new Date(project.end_date).toLocaleDateString()}
+              </Card.Text>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
+      <Card className="status">
+        <Card.Body>
+          {hasEnteredTimesheet ? (
+            <FaCheckCircle className="timesheet-icon" />
+          ) : (
+            <FaTimesCircle className="timesheet-icon" />
+          )}
+          <Card.Text>Timesheet Status</Card.Text>
+        </Card.Body>
+      </Card>
+      <Card className="status">
+        <Card.Body>
+          {hasEnteredFeedback ? (
+            <FaCheckCircle className="feedback-icon" />
+          ) : (
+            <FaTimesCircle className="feedback-icon" />
+          )}
+          <Card.Text>Feedback Status</Card.Text>
+        </Card.Body>
+      </Card>
     </div>
   );
 };

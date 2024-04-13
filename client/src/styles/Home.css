@@ -1,71 +1,160 @@
+/* Styles for the home container */
 .home-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-.home-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-.home-content{
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-.admin-buttons {
-  margin-bottom: 20px;
-}
-
-.home-cards-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
+  height: 100vh;
 }
 
-.home-card {
-  flex: 1;
-  min-width: 250px;
-  margin: 10px;
+/* Styles for when the user is logged in */
+.logged-in {
+  /* Add styles as needed */
+}
+
+/* Styles for when the user is logged out */
+.logged-out {
+  /* Add styles as needed */
+}
+
+/* Title style */
+.home-title {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #fefefe;
+  text-align: center; /* Center align the text */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Add text shadow for depth */
+}
+
+/* Content style */
+.home-content {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center; /* Center align the text */
+  max-width: 600px; /* Limit the maximum width */
+  margin: 0 auto; /* Center the content horizontally */
+  line-height: 1.5; /* Adjust line height for better readability */
+}
+
+/* Image style */
+.homeImg {
+  width: 300px; /* Increase image width for better visibility */
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 50%; /* Apply border-radius for rounded corners */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add box shadow for depth */
+}
+
+/* Admin and User body styles */
+.adminBody,
+.userBody {
+  margin-top: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 80%;
+  max-width: 1200px;
+  overflow-y: auto; /* Add scrolling */
+  max-height: 80vh; /* Limit max height */
 }
 
-.card-heading {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  color: #333;
+/* Admin and User content styles */
+.adminContent,
+.userContent {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
 }
 
-.card-text {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: #555;
-}
-
+/* Project list style */
 .project-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 10px;
+}
+
+/* Project card style */
+.project-card {
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Assigned projects text style */
+.assignedProjectsText {
+  margin-bottom: 20px;
+}
+
+/* Status style */
+.status {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+/* Timesheet and Feedback icon style */
+.timesheet-icon,
+.feedback-icon {
+  margin-right: 10px;
+  color: green;
+}
+
+/* Select user section style */
+.adminSelectUser {
+  margin-bottom: 20px;
+}
+
+/* Select user dropdown style */
+.adminSelectUser select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* User details section style */
+.adminGetUser {
   margin-top: 20px;
 }
 
-.project-list h3 {
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.project-list p {
-  font-size: 1.2rem;
+/* User details style */
+.adminGetUser h2 {
+  font-size: 24px;
   margin-bottom: 10px;
-  color: #777;
+  color: #ffffff;
 }
 
+/* User details paragraph style */
+.adminGetUser p {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
 
-.homeImg{
-  height: 250px;
-  
+/* Scrollbar style */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
 
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Move scrollbar to page corner */
+.adminBody,
+.userBody {
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
 }

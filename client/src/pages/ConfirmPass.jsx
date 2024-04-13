@@ -19,7 +19,7 @@ const ConfirmPass = () => {
     }
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/changepassword/${localStorage.getItem(
+        `http://localhost:5000/api/change_password/${localStorage.getItem(
           "id"
         )}`,
         { password: newPassword }

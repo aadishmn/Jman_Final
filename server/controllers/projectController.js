@@ -13,27 +13,23 @@ const create_project = async (req, res) => {
     }
 
     const { name, start, end, client_name } = req.body;
+    // Parse the date strings to Date objects
+    const startDate = new Date(start);
+    const endDate = new Date(end);
 
-    // if (req.data && req.data.isAdmin === true) {
+    console.log(startDate);
     const newProj = new Project({
       PID: randomString,
       name: name,
-      start_date: start,
-      end_date: end,
+      start_date: start, // Use parsed start date
+      end_date: end, // Use parsed end date
       client_name: client_name,
       created_at: new Date(),
     });
 
-    try {
-      const result = await newProj.save();
-    } catch (error) {
-      console.error(error);
-    }
+    const result = await newProj.save();
+    console.log(result);
     res.json({ message: "Project Added" });
-
-    // } else {
-    //     res.status(403).json({ message: "Only admins can perform this function" });
-    // }
   } catch (err) {
     console.error("Error creating project", err);
     res.status(500).json({ message: "Error creating project" });
@@ -59,6 +55,64 @@ const allocate_project = async (req, res) => {
     }
     res.json({ message: "Project allocated" });
 
+    // } else {
+    //     res.status(403).json({ message: "Only admins can perform this function" });
+    // }
+  } catch (err) {
+    console.error("Error creating project", err);
+    res.status(500).json({ message: "Error creating project" });
+  }
+};
+
+const activeProjects = async (req, res) => {
+  try {
+    const activeProjects = await Project.find();
+
+    res.json(activeProjects);
+  } catch (err) {
+    console.error("Error fetching active projects", err);
+    res.status(500).json({ message: "Error fetching active projects" });
+  }
+};
+
+const users = async (req, res) => {
+  try {
+    const users = await User.find();
+    console.log(users);
+    res.json(users);
+  } catch (err) {
+    console.error("Error fetching users", err);
+    res.status(500).json({ message: "Error fetching users" });
+  }
+};
+
+const totalUsers = async (req, res) => {
+  try {
+    const totalUsers = User.length;
+    res.json({ totalUsers });
+  } catch (err) {
+    console.error("Error fetching all projects", err);
+    res.status(500).json({ message: "Error fetching all projects" });
+  }
+};
+
+const getUsersProjectsAllocation = async (req, res) => {
+  try {
+    // if (req.user && req.user.role === "admin") {
+    const Users = await User.find();
+    const Projects = await Project.find();
+    const formattedData = {
+      message: "data received!",
+      users: Users.map((user) => ({ email: user.email, name: user.firstName })),
+      projects: Projects.map((project) => ({
+        PID: project.PID,
+        name: project.name,
+        start: project.start_date,
+        end: project.end_date,
+      })),
+    };
+    res.json(formattedData);
+    console.log(formattedData);
     // } else {
     //     res.status(403).json({ message: "Only admins can perform this function" });
     // }
@@ -94,16 +148,13 @@ const getUsersProjects = async (req, res) => {
       message: "User's projects received!",
       projects: projectsDetails,
     };
-
-
+    console.log(formattedData);
     res.json(formattedData);
   } catch (err) {
     console.error("Error fetching user's projects", err);
     res.status(500).json({ message: "Error fetching user's projects" });
   }
 };
-
-
 
 const countProjects = async (req, res) => {
   try {
@@ -126,4 +177,8 @@ module.exports = {
   allocate_project,
   getUsersProjects,
   countProjects,
+  totalUsers,
+  activeProjects,
+  users,
+  getUsersProjectsAllocation,
 };
