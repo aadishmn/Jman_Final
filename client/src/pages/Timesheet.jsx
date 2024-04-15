@@ -76,7 +76,6 @@ function TimeSheetParent() {
           const data = await response.json();
           setTimesheetdata(data.payload);
           const [temp] = Object.keys(data.payload);
-          if (data.payload[temp].flag === true) navigate("/feedback");
 
           setCheckFlag(data.payload[temp].flag);
         } catch (error) {
@@ -552,11 +551,13 @@ function TimeSheetParent() {
             <TimeSheetLoop setID={setID} />
           </tbody>
         </table>
+        {!checkFlag && (
         <div className="submit-button">
           <button onClick={handleSubmit} className="btn btn-primary">
             Submit
           </button>
         </div>
+      )}
       </div>
     );
   }

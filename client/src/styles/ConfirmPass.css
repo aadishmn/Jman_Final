@@ -1,14 +1,10 @@
-/* ConfirmPass.css */
-
-/* Container for centering */
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Full viewport height */
+  height: 100vh; 
 }
 
-/* Form card container */
 .form-card {
   width: 400px;
   padding: 20px;
@@ -17,7 +13,6 @@
   background-color: #f9f9f9;
 }
 
-/* Form fields */
 .form-control {
   width: 100%;
   padding: 10px;
@@ -26,14 +21,12 @@
   border-radius: 4px;
 }
 
-/* Error message */
 .error-message {
   color: red;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
-/* Submit button */
 #confirm-btn {
   width: 100%;
   padding: 10px;
@@ -44,7 +37,6 @@
   cursor: pointer;
 }
 
-/* Submit button hover effect */
 #confirm-btn:hover {
   background-color: #0056b3;
 }

@@ -40,7 +40,6 @@ const feedbackHistory = async (req, res) => {
     const userDetail = await UserModel.findById(userId);
     const userEmail = userDetail.email;
     const feedbackHistory = await feedbackModel.find({ email: userEmail });
-    console.log(feedbackHistory);
     res.status(200).json(feedbackHistory);
   } catch (err) {
     res.json({ message: "unable to fetch feedback history" });

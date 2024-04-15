@@ -50,7 +50,6 @@ const RegistrationForm = () => {
               </div>
               <div className="col-md-6">
                 <h3 className="card-title text-center mb-4">Register</h3>
-                {error && <div className="alert alert-danger">{error}</div>}
                 {success && (
                   <div className="alert alert-success">{success}</div>
                 )}

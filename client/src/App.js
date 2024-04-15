@@ -5,10 +5,10 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./pages/LoginForm";
 import Home from "./pages/home";
 import Navbar from "./components/Navbar";
-import RegistrationForm from "./components/RegistrationForm";
+import RegistrationForm from "./pages/RegistrationForm";
 import ConfirmPass from "./pages/ConfirmPass";
 import ResetPassword from "./components/ResetPassword";
 import AddProject from "./pages/addProject";
@@ -16,6 +16,7 @@ import AllocateProject from "./pages/allocateProject";
 import TimeSheetParent from "./pages/Timesheet";
 import Feedback from "./pages/Feedback";
 import FeedbackHistory from "./pages/feedbackHistory";
+import { Bi } from "./pages/Bi";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -61,6 +62,7 @@ const App = () => {
         <Route path="/allocate_project" element={<AllocateProject />} />
         <Route path="/timesheet" element={<TimeSheetParent />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/bi" element={<Bi />} />
         <Route path="/feedbackHistory" element={<FeedbackHistory />} />
       </Routes>
     </Router>

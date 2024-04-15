@@ -1,76 +1,105 @@
-/* Navbar.css */
-
-/* Navbar Brand Logo */
 .navbar-logo {
-  width: 30px; /* Adjust the logo width as needed */
-  margin-right: 5px; /* Adjust the margin as needed */
+  width: 30px; 
+  margin-right: 5px;
 }
 
-/* Navbar Links */
 .navbar-nav .nav-link {
-  color: #ffffff; /* Text color */
-  margin-right: 10px; /* Adjust the margin between links as needed */
+  color: #ffffff; 
+  margin-right: 0; /* Remove right margin */
+  text-align: center; /* Center align the text */
 }
 
 .navbar-nav .nav-link:hover {
-  color: #ffffff; /* Text color on hover */
+  color: #ffffff; 
 }
 
-/* Toggle Button */
 .navbar-toggler {
-  border: none; /* Remove border */
-  color: #ffffff; /* Set toggle button color */
+  border: none; 
+  color: #ffffff;
 }
 
 .navbar-toggler:focus {
-  outline: none; /* Remove outline */
+  outline: none; 
 }
 
-/* Navbar Toggle Icon Color */
 .navbar-toggler-icon {
-  background-color: #ffffff; /* Toggle icon color */
+  background-color: #ffffff; 
 }
 
-/* Navbar Background */
 .navbar {
   background-color: #9221d8;
 }
 
-/* Container Fluid */
 .container-fluid {
-  padding: 0 20px; /* Adjust horizontal padding as needed */
+  padding: 0 20px;
 }
 
-/* Navbar Brand Text */
 .navbar-brand {
-  font-size: 20px; /* Adjust font size as needed */
-  font-weight: bold; /* Add font weight as needed */
+  font-size: 20px; 
+  font-weight: bold; 
 }
 
-/* Collapse Items */
 .collapse.navbar-collapse {
-  justify-content: flex-end; /* Align items to the right */
+  justify-content: flex-end; 
 }
 
-/* Navbar Toggle Icon Color */
 .navbar-toggler-icon {
-  background-color: #ffffff; /* Toggle icon color */
+  background-color: #ffffff;
 }
 
-/* Active Link */
 .navbar-nav .nav-link.active {
-  color: #ffffff; /* Active link text color */
+  color: #ffffff; 
 }
 
-/* Dropdown Menu */
 .dropdown-menu {
-  background-color: #6a1b9a; /* Adjust dropdown background color as needed */
+  background-color: #6a1b9a;
 }
 
 .dropdown-item {
-  color: #ffffff; /* Dropdown item text color */
+  color: #ffffff; 
 }
 
 .dropdown-item:hover {
-  background-color: #4a148c; /* Dropdown item background color on hover */
+  background-color: #4a148c;
+}
+
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    flex-direction: column;
+    align-items: center; /* Center align the items */
+    background-color: #792ea8;
+    padding: 20px; 
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+    z-index: 1000; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    border-radius: 5px;
+    display: none; 
+  }
+
+  .navbar-collapse.show .navbar-nav {
+    display: flex; 
+  }
+
+  .navbar-nav .nav-item {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%; /* Make the items full width */
+  }
+
+  .navbar-nav .nav-link {
+    color: #ffffff;
+  }
+
+  .navbar-toggler {
+    display: block; 
+  }
+
+  .container-fluid {
+    padding-right: 15px; 
+    padding-left: 15px;
+  }
 }

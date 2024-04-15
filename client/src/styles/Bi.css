@@ -1,0 +1,18 @@
+.navbar {
+    height: 60px; /* Adjust the height of your navbar */
+  }
+  
+  .powerbi-container {
+    position: relative;
+    width: 100%;
+    padding-top: calc(100% * 9 / 16); /* 16:9 aspect ratio (responsive height) */
+  }
+  
+  .powerbi-iframe {
+    position: absolute;
+    top: 60px; /* Adjust this value to match the height of your navbar */
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px); /* Adjust this value to subtract the navbar height */
+  }
+  

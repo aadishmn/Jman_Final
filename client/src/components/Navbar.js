@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
 import { FaBars } from "react-icons/fa";
@@ -6,8 +6,15 @@ import { FaBars } from "react-icons/fa";
 import logo from "../styles/Images/logo.png";
 
 const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
+
+  const handleToggleClick = () => {
+    setIsToggleOpen(!isToggleOpen);
+  };
+
   const handleLogoutClick = () => {
     handleLogout();
+    setIsToggleOpen(false); // Close the toggle after logout
   };
 
   return (
@@ -20,34 +27,44 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
         <button
           className="navbar-toggler"
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          onClick={handleToggleClick}
         >
           <FaBars />
         </button>
-        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          className={`collapse navbar-collapse ${isToggleOpen ? "show" : ""}`}
+        >
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link to="/" className="nav-link">
+              <Link to="/" className="nav-link" onClick={handleToggleClick}>
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/timesheet" className="nav-link">
+              <Link
+                to="/timesheet"
+                className="nav-link"
+                onClick={handleToggleClick}
+              >
                 Timesheet
               </Link>
             </li>
             <li className="nav-item">
-              <Link to="/feedback" className="nav-link">
+              <Link
+                to="/feedback"
+                className="nav-link"
+                onClick={handleToggleClick}
+              >
                 Feedback
               </Link>
-            </li>{" "}
+            </li>
             {isAuthenticated && (
               <li className="nav-item">
-                <Link to="/feedbackHistory" className="nav-link">
+                <Link
+                  to="/feedbackHistory"
+                  className="nav-link"
+                  onClick={handleToggleClick}
+                >
                   Feedback History
                 </Link>
               </li>
@@ -55,18 +72,39 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
             {isAdmin && (
               <React.Fragment>
                 <li className="nav-item">
-                  <Link to="/create_project" className="nav-link">
+                  <Link
+                    to="/create_project"
+                    className="nav-link"
+                    onClick={handleToggleClick}
+                  >
                     Create Project
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link to="/allocate_project" className="nav-link">
+                  <Link
+                    to="/allocate_project"
+                    className="nav-link"
+                    onClick={handleToggleClick}
+                  >
                     Allocate Project
                   </Link>
-                </li>{" "}
+                </li>
                 <li className="nav-item">
-                  <Link to="/signup" className="nav-link">
+                  <Link
+                    to="/signup"
+                    className="nav-link"
+                    onClick={handleToggleClick}
+                  >
                     Register
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/bi"
+                    className="nav-link"
+                    onClick={handleToggleClick}
+                  >
+                    Bi
                   </Link>
                 </li>
               </React.Fragment>
@@ -81,7 +119,11 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
                   Logout
                 </Link>
               ) : (
-                <Link to="/login" className="nav-link">
+                <Link
+                  to="/login"
+                  className="nav-link"
+                  onClick={handleToggleClick}
+                >
                   Login
                 </Link>
               )}

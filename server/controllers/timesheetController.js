@@ -163,7 +163,7 @@ cron.schedule("0 10 * * 5", async () => {
     if (!timesheet) {
       transporter.sendMail(
         {
-          from: "dhiyanesh7338942092@gmail.com",
+          from: "aadishnagarajan@gmail.com",
           to: user.email,
           subject: "Reminder: Submit your timesheet & feedback",
           text: "This is a reminder to submit your timesheet & feedback for the current week.",
@@ -179,8 +179,8 @@ cron.schedule("0 10 * * 5", async () => {
     } else if (!timesheet.flag) {
       transporter.sendMail(
         {
-          from: "dhiyanesh7338942092@gmail.com",
-          to: "aadishmn@gmail.com",
+          from: "aadishnagarajan@gmail.com",
+          to: user.email,
           subject: "Reminder: Submit your feedback",
           text: "This is a reminder to submit your feedback for the current week.",
         },

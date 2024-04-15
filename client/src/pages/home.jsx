@@ -287,25 +287,27 @@ const UserHome = ({
         ))}
       </div>
       <Card className="status">
-        <Card.Body>
-          {hasEnteredTimesheet ? (
-            <FaCheckCircle className="timesheet-icon" />
-          ) : (
-            <FaTimesCircle className="timesheet-icon" />
-          )}
-          <Card.Text>Timesheet Status</Card.Text>
-        </Card.Body>
-      </Card>
-      <Card className="status">
-        <Card.Body>
-          {hasEnteredFeedback ? (
-            <FaCheckCircle className="feedback-icon" />
-          ) : (
-            <FaTimesCircle className="feedback-icon" />
-          )}
-          <Card.Text>Feedback Status</Card.Text>
-        </Card.Body>
-      </Card>
+  <Card.Body>
+    {hasEnteredTimesheet ? (
+      <FaCheckCircle className="timesheet-icon" />
+    ) : (
+      <FaTimesCircle className="timesheet-icon" />
+    )}
+    <Card.Text>Timesheet Status</Card.Text>
+  </Card.Body>
+</Card>
+
+<Card className="status">
+  <Card.Body>
+    {hasEnteredFeedback ? (
+      <FaCheckCircle className="feedback-icon" />
+    ) : (
+      <FaTimesCircle className="feedback-icon" />
+    )}
+    <Card.Text>Feedback Status</Card.Text>
+  </Card.Body>
+</Card>
+
     </div>
   );
 };

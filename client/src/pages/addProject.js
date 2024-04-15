@@ -127,7 +127,7 @@ function AddProject() {
             required
           />
         </div>
-        <button type="submit" id="subbtn" className="btn btn-primary btn-sm">
+        <button type="submit" id="subbtn" className="btn btn-primary">
           Add Project
         </button>
       </form>

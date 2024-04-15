@@ -33,8 +33,8 @@ function FeedbackHistory() {
           <div className="feedback-item" key={index}>
             <p>Role: {feedback.role}</p>
             <p>Email: {feedback.email}</p>
-            <p>Start Period: {feedback.start_period}</p>
-            <p>End Period: {feedback.end_period}</p>
+            <p>Start Period: {new Date(feedback.start_period).toLocaleDateString()}</p>
+            <p>End Period: {new Date(feedback.end_period).toLocaleDateString()}</p>
             {Object.keys(feedbackQuestions[feedback.role]).map(
               (questionKey) => (
                 <div key={questionKey}>
@@ -47,7 +47,7 @@ function FeedbackHistory() {
                 </div>
               )
             )}
-            <p>Comments: {feedback.comments}</p>
+            <p className="commentsValue">Comments: {feedback.comments}</p>
           </div>
         ))}
       </div>

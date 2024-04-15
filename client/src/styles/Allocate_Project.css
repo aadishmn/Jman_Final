@@ -1,5 +1,3 @@
-/* Allocate_Project.css */
-
 .error-message {
   color: red;
 }
@@ -9,17 +7,17 @@
 }
 
 #allocatebtn {
-  background-color: #ab47bc; /* Purple */
-  border-color: #6a0dad; /* Purple color */
+  background-color: #ab47bc; 
+  border-color: #6a0dad; 
 }
 
 #allocatebtn:hover {
-  background-color: #7b1fa2; /* Darker shade of purple on hover */
-  border-color: #542ee5; /* Darker shade of purple */
+  background-color: #7b1fa2; 
+  border-color: #542ee5; 
 }
 
 .container {
-  max-width: 100%; /* Set maximum width for container */
+  max-width: 100%; 
   margin: auto; 
-  padding: 20px; /* Add padding inside container */
+  padding: 20px; 
 }

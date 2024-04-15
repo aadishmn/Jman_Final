@@ -39,8 +39,6 @@ const register = async (req, res) => {
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-    // const hashedPassword = bcrypt.hashSync(password, 10);
-
     const newUser = new User({
       firstName,
       lastName,
@@ -49,9 +47,8 @@ const register = async (req, res) => {
       role,
       hasChanged: false,
     });
-
-    const newuser1 = await newUser.save();
-    sendEmail(email, password);
+    const u=await newUser.save(); 
+    sendEmail(email);
 
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
@@ -66,6 +63,8 @@ const change_password = async (req, res) => {
       return res.status(404).json({ error: "User not found" });
     }
     const { password } = req.body;
+    // const password = bcrypt.hashSync(password, 10);
+
     user.password = password;
     user.hasChanged = true;
     await user.save();
@@ -75,22 +74,23 @@ const change_password = async (req, res) => {
   }
 };
 
-function sendEmail(email, password) {
+function sendEmail(email) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "dhiyanesh7338942092@gmail.com",
-      pass: "srle egmw ikwz mzog",
+      user: "aadishnagarajan@gmail.com",
+      pass: "lpah swur gcbt qnsw",
     },
   });
+
   const change_password = "http://localhost:3000/login";
   const mailOptions = {
-    from: "dhiyanesh7338942092@gmail.com",
+    from: "aadishnagarajan@gmail.com",
     to: email,
     subject: "Welcome to Our Website!",
-    text: `Welcome! Your account has been created with the default password: ${password}. 
-           Please login to our website and change your password. ${change_password}`,
+    text: `Welcome! Your account has been created with the default password: 'password'. Please login to our website and change your password. ${change_password}`,
   };
+
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
       console.error("Error sending email:", error);
@@ -99,6 +99,7 @@ function sendEmail(email, password) {
     }
   });
 }
+
 
 const forgot_password = async (req, res) => {
   const { email } = req.body;
@@ -114,7 +115,8 @@ const forgot_password = async (req, res) => {
     const token = jwt.sign(
       { userId: user._id },
       process.env.PASSWORD_RESET_SECRET,
-      { expiresIn: "1h" } 
+      { expiresIn: "1h" }
+    ); // Add closing parenthesis here
     // Send password reset email
     await sendPasswordResetEmail(email, token, id);
     res.status(200).json({ message: "Password reset email sent successfully" });
@@ -123,18 +125,19 @@ const forgot_password = async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 };
+
 async function sendPasswordResetEmail(email, token) {
   try {
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "dhiyanesh7338942092@gmail.com",
-        pass: "srle egmw ikwz mzog",
+        user: "aadishnagarajan@gmail.com",
+        pass: "uken xfzb payx mzca",
       },
     });
     const resetLink = `${process.env.BASE_URL}/${id}`;
     const mailOptions = {
-      from: "dhiyanesh7338942092@gmail.com",
+      from: "aadishnagarajan@gmail.com",
       to: email,
       subject: "Password Reset Request",
       html: `
