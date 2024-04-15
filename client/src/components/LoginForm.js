@@ -18,17 +18,15 @@ const LoginForm = ({ handleLogin }) => {
         password,
       });
       const { token, isAdmin, id, hasChanged, role } = response.data;
-      console.log(response.data);
       localStorage.setItem("token", token);
       localStorage.setItem("id", id);
       localStorage.setItem("role", role);
 
       handleLogin({ token, isAdmin });
-      // Check if user has changed password
       if (hasChanged === false) {
-        navigate(`/changepassword/${id}`); // Navigate to change password page if password hasn't been changed
+        navigate(`/changepassword/${id}`);
       } else {
-        navigate("/"); // Navigate to home page if password has been changed
+        navigate("/");
       }
     } catch (error) {
       setError("Login failed");

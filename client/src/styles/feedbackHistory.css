@@ -1,0 +1,50 @@
+/* Updated CSS for centering the feedback history container */
+.feedback-history-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.feedback-history-container {
+  max-width: 800px;
+  padding: 20px;
+  height: 400px;
+  overflow-y: auto;
+  background-color: #f0f0f0; /* Added background color for visibility */
+}
+
+.feedback-history-container > h2 {
+  color: #333; /* Changed text color for better readability */
+}
+
+.feedback-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.feedback-question {
+  font-weight: bold;
+}
+
+.feedback-value {
+  margin-top: 5px;
+  color: blueviolet;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .feedback-history-container {
+    padding: 10px;
+    height: auto;
+  }
+
+  .feedback-item {
+    padding: 5px;
+    font-size: 14px;
+  }
+}

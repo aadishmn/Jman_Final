@@ -15,8 +15,8 @@ const Home = ({ isAdmin }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [totalUsers, setTotalUsers] = useState(0);
   const [activeProjects, setActiveProjects] = useState([]);
-  const [selectedUserId, setSelectedUserId] = useState(""); // State to store selected user ID
-  const [usersData, setUsersData] = useState([]); // State to store users data as an array
+  const [selectedUserId, setSelectedUserId] = useState("");
+  const [usersData, setUsersData] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -136,7 +136,7 @@ const Home = ({ isAdmin }) => {
         });
         const data = await response.json();
         if (response.ok) {
-          setUsersData(data); // Assuming data is an array of user objects
+          setUsersData(data);
         } else {
           console.error("Failed to fetch users data:", data.message);
         }
@@ -155,7 +155,6 @@ const Home = ({ isAdmin }) => {
 
   const handleUserSelect = (event) => {
     setSelectedUserId(event.target.value);
-    // Any other logic you want to perform when a user is selected
   };
 
   return (
@@ -202,17 +201,13 @@ const AdminHome = ({
 }) => {
   const [selectedUserData, setSelectedUserData] = useState(null);
 
-  // Function to handle user selection
   const handleUserSelectChange = (event) => {
     const selectedUserId = event.target.value;
-    console.log(selectedUserId);
-    console.log(usersData);
 
     const selectedUser = usersData.find(
       (user) => user.email === selectedUserId
     );
     setSelectedUserData(selectedUser);
-    console.log(selectedUser);
   };
 
   return (
@@ -248,7 +243,6 @@ const AdminHome = ({
           ))}
         </select>
       </div>
-      {/* Display user's data based on selection */}
       <div className="adminGetUser">
         {selectedUserData && (
           <div>
@@ -257,7 +251,6 @@ const AdminHome = ({
             <p>
               Name: {selectedUserData.firstName} {selectedUserData.lastName}
             </p>
-            {/* Add more user details as needed */}
           </div>
         )}
       </div>

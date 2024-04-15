@@ -1,15 +1,13 @@
-// Navbar.js
-
 import React from "react";
 import { Link } from "react-router-dom";
 import "../styles/Navbar.css";
-import { FaBars } from "react-icons/fa"; // Import the FaBars icon
+import { FaBars } from "react-icons/fa";
 
 import logo from "../styles/Images/logo.png";
 
 const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
   const handleLogoutClick = () => {
-    handleLogout(); // Call the handleLogout function passed from the parent component
+    handleLogout();
   };
 
   return (
@@ -28,7 +26,7 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <FaBars /> {/* Use the FaBars icon component */}
+          <FaBars />
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -46,7 +44,14 @@ const Navbar = ({ isAuthenticated, isAdmin, handleLogout }) => {
               <Link to="/feedback" className="nav-link">
                 Feedback
               </Link>
-            </li>
+            </li>{" "}
+            {isAuthenticated && (
+              <li className="nav-item">
+                <Link to="/feedbackHistory" className="nav-link">
+                  Feedback History
+                </Link>
+              </li>
+            )}
             {isAdmin && (
               <React.Fragment>
                 <li className="nav-item">

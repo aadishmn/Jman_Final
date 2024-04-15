@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "../styles/ConfirmPass.css"; // Import ConfirmPass.css
+import "../styles/ConfirmPass.css";
 
 const ConfirmPass = () => {
   const navigate = useNavigate();
@@ -28,7 +28,6 @@ const ConfirmPass = () => {
         alert("Password Updated Successfully !");
         navigate("/login");
       } else {
-        console.log(response);
         setErrorMessage("Internal Server Error");
       }
     } catch (error) {
@@ -40,7 +39,6 @@ const ConfirmPass = () => {
   return (
     <div className="container">
       {" "}
-      {/* Added container div */}
       <div className="form-card">
         <form className="changePassForm" onSubmit={handleChangePassword}>
           <input
@@ -49,7 +47,7 @@ const ConfirmPass = () => {
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
             required
-            className="form-control" // Added Bootstrap class
+            className="form-control"
           />
           <br />
           <input
@@ -58,14 +56,13 @@ const ConfirmPass = () => {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
-            className="form-control" // Added Bootstrap class
+            className="form-control"
           />
           <br />
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <button type="submit" id="confirm-btn" className="btn">
             Update Password
           </button>{" "}
-          {/* Added Bootstrap classes */}
         </form>
       </div>
     </div>

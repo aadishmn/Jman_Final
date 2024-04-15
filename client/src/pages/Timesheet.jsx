@@ -1,14 +1,11 @@
 import { useState, useEffect } from "react";
-import "../styles/Timesheet.css"; // Custom CSS file for additional styling
+import "../styles/Timesheet.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useNavigate } from "react-router-dom";
 
 function TimeSheetParent() {
   const [startDate, setStartDate] = useState(new Date("2024-01-01"));
   const [endDate, setEndDate] = useState(new Date("2024-01-07"));
-
-  console.log("starte", startDate);
-  console.log("ende", endDate);
 
   const handleNextWeek = () => {
     // Increment the start date by 7 days to get the start date of the next week
@@ -37,7 +34,7 @@ function TimeSheetParent() {
     for (let i = 0; i < 7; i++) {
       const date = new Date(startDate);
       date.setDate(date.getDate() + i);
-      dates.push(date.toDateString()); // You can format the date as needed
+      dates.push(date.toDateString());
     }
     return dates;
   };
@@ -51,7 +48,7 @@ function TimeSheetParent() {
     const firstID = Object.keys(Timesheetdata)[0];
     const [userProjects, setUserProjects] = useState([]);
     const [selectedProject, setSelectedProject] = useState("");
-    const [projectDetails, setProjectDetails] = useState(null); // State to hold project details
+    const [projectDetails, setProjectDetails] = useState(null);
     const [checkFlag, setCheckFlag] = useState(false);
 
     const navigate = useNavigate();
@@ -79,13 +76,9 @@ function TimeSheetParent() {
           const data = await response.json();
           setTimesheetdata(data.payload);
           const [temp] = Object.keys(data.payload);
-          // const payloadArray = data.payload[temp];
-          // if (data.payload[temp].flag === true) navigate("/feedback");
+          if (data.payload[temp].flag === true) navigate("/feedback");
 
-          console.log(temp);
           setCheckFlag(data.payload[temp].flag);
-          // console.log(payloadArray.flag)
-          console.log(checkFlag);
         } catch (error) {
           console.error("Error fetching timesheet data:", error);
         }
@@ -105,7 +98,6 @@ function TimeSheetParent() {
           );
 
           const data = await response.json();
-          console.log(data.payload);
           SetAssignedprojects(data.payload);
         } catch (error) {
           console.error("Error fetching timesheet data:", error);
@@ -115,16 +107,6 @@ function TimeSheetParent() {
       fetchUserProject();
       fetchData();
     }, []);
-
-    // useEffect(() => {
-    //         // Recalculate total hours whenever Timesheetdata changes
-    //         let totalHours = 0;
-    //         for (const key in Timesheetdata) {
-    //             const row = Timesheetdata[key];
-    //             totalHours += Number(row.mon) + Number(row.tue) + Number(row.wed) + Number(row.thur) + Number(row.fri) + Number(row.sat) + Number(row.sun);
-    //         }
-    //         SetTotalHours(totalHours);
-    //     }, []);
 
     const handleSubmit = async (e) => {
       try {
@@ -150,9 +132,6 @@ function TimeSheetParent() {
         sessionStorage.setItem("end_period", end_period);
         sessionStorage.setItem("projectId_timesheet", projectId);
         navigate("/feedback");
-        // const data = await response.json();
-        // console.log(response);
-        // setTimesheetdata(data.payload)
       } catch (error) {
         console.error("Error fetching timesheet data:", error);
       }
@@ -203,7 +182,7 @@ function TimeSheetParent() {
                 ></Showtimesheet>
               );
             } else {
-              return null; // Render nothing if 'visible' is false
+              return null;
             }
           })}
 
@@ -484,22 +463,9 @@ function TimeSheetParent() {
       );
     }
 
-    // const fetchProjectDetails = async (projectId) => {
-    //     try {
-    //         const response = await fetch(`backend_url/projects/${projectId}`); // Adjust the URL according to your backend route
-    //         const data = await response.json();
-    //         return data;
-    //     } catch (error) {
-    //         console.error('Error fetching project details:', error);
-    //         return null;
-    //     }
-    // };
-
     const handleProjectChange = (event) => {
       const projectId = event.target.value;
       setSelectedProject(event.target.value);
-      // const details = await fetchProjectDetails(projectId);
-      // setProjectDetails(details);
     };
     return (
       <div className="main">
@@ -529,7 +495,7 @@ function TimeSheetParent() {
                     return (
                       <div key={index}>
                         <p>
-                          Project Start Date:{" "}
+                          Project Start Date:
                           {new Date(
                             Assignedproject.allocation_start
                           ).toLocaleDateString("en-US", {
@@ -539,7 +505,7 @@ function TimeSheetParent() {
                           })}
                         </p>
                         <p>
-                          Project End Date:{" "}
+                          Project End Date:
                           {new Date(
                             Assignedproject.allocation_end
                           ).toLocaleDateString("en-US", {

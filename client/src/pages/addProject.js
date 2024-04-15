@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/AddProject.css"; // Import AddProject.css
+import "../styles/AddProject.css";
 
 function AddProject() {
   const [formData, setFormData] = useState({
@@ -23,7 +23,6 @@ function AddProject() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Convert start and end dates to "dd-mm-yyyy" format
       const formattedStart = formatDate(formData.start);
       const formattedEnd = formatDate(formData.end);
       const response = await fetch("http://localhost:5000/api/create_project", {
@@ -58,11 +57,10 @@ function AddProject() {
     }
   };
 
-  // Function to format date as "dd-mm-yyyy"
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     const day = date.getDate();
-    const month = date.getMonth() + 1; // Months are zero based
+    const month = date.getMonth() + 1;
     const year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };

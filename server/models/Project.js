@@ -28,7 +28,6 @@ const projectSchema = new mongoose.Schema({
   },
 });
 
-// Custom setter function to format date as "dd-mm-yyyy"
 function formatDate(date) {
   const d = new Date(date);
   const year = d.getFullYear();

@@ -17,7 +17,6 @@ async function RetreiveProjectName(projects) {
     try {
       const PID = projects[i].PID;
       const project = await projectModel.findOne({ PID: PID });
-      console.log("yjh", project);
       if (project) {
         formattedProjectNames.push({
           PID: PID,
@@ -29,10 +28,7 @@ async function RetreiveProjectName(projects) {
         // Handle case where project with given PID is not found
         formattedProjectNames.push({ PID: "not found" });
       }
-
-      console.log(formattedProjectNames);
     } catch (error) {
-      // Handle error in case of any issues with the findOne operation
       console.error(
         `Error retrieving project with PID ${projects[i].PID}:`,
         error

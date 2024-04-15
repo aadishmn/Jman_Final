@@ -1,4 +1,3 @@
-// authRoutes.js
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
@@ -11,13 +10,6 @@ const login = async (req, res) => {
   try {
     const user = await User.findOne({ email });
 
-    // if (user.hasChanged == false) {
-    //   return res.status(401).json({ message: "change new pasword" });
-    // } else {
-    //   if (!user || password != user.password) {
-    //     return res.status(401).json({ message: "Invalid email or password" });
-    //   }
-    // }
 
     const token = jwt.sign(
       {
@@ -56,11 +48,9 @@ const register = async (req, res) => {
       password: "password",
       role,
       hasChanged: false,
-      // isAdmin: false // Set isAdmin based on the authenticated user
     });
 
     const newuser1 = await newUser.save();
-    console.log(newuser1);
     sendEmail(email, password);
 
     res.status(201).json({ message: "User created successfully" });
@@ -72,7 +62,6 @@ const register = async (req, res) => {
 const change_password = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
-    console.log(req.params.id);
     if (!user) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -125,8 +114,7 @@ const forgot_password = async (req, res) => {
     const token = jwt.sign(
       { userId: user._id },
       process.env.PASSWORD_RESET_SECRET,
-      { expiresIn: "1h" } // Token expires in 1 hour
-    );
+      { expiresIn: "1h" } 
     // Send password reset email
     await sendPasswordResetEmail(email, token, id);
     res.status(200).json({ message: "Password reset email sent successfully" });

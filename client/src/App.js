@@ -15,6 +15,7 @@ import AddProject from "./pages/addProject";
 import AllocateProject from "./pages/allocateProject";
 import TimeSheetParent from "./pages/Timesheet";
 import Feedback from "./pages/Feedback";
+import FeedbackHistory from "./pages/feedbackHistory";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -37,7 +38,6 @@ const App = () => {
     sessionStorage.removeItem("projectId_timesheet");
     setIsAuthenticated(false);
     setIsAdmin(false);
-    // You can directly use the Navigate component here
     return <Navigate to="/login" />;
   };
 
@@ -61,6 +61,7 @@ const App = () => {
         <Route path="/allocate_project" element={<AllocateProject />} />
         <Route path="/timesheet" element={<TimeSheetParent />} />
         <Route path="/feedback" element={<Feedback />} />
+        <Route path="/feedbackHistory" element={<FeedbackHistory />} />
       </Routes>
     </Router>
   );

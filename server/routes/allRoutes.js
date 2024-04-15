@@ -3,11 +3,13 @@ const { Router } = require("express");
 const router = Router();
 
 const authUtils = require("../utils/authUtils");
+
+//main apis
+
 const AuthControllers = require("../controllers/authController");
 const ProjectControllers = require("../controllers/projectController");
 const TimesheetControllers = require("../controllers/timesheetController");
 const Feedback = require("../controllers/feedbackController");
-//main apis
 router.post("/login", AuthControllers.login);
 router.post("/register", AuthControllers.register);
 router.put("/change_password/:id", AuthControllers.change_password);
@@ -44,6 +46,7 @@ router.post(
   authUtils.authenticateJWT,
   Feedback.CreateFeedbackEntry
 );
+router.get("/feedbackHistory/:id", Feedback.feedbackHistory);
 router.get(
   "/assignedProjectsCount",
   authUtils.authenticateJWT,

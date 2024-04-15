@@ -2,11 +2,10 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Questions from "../Data/feedbackQues.json";
-import "../styles/Feedback.css"
+import "../styles/Feedback.css";
 function Feedback() {
   const [accessToken, setToken] = useState(localStorage.getItem("token"));
   const [role, setRole] = useState(localStorage.getItem("role"));
-  // Assume user is not an admin by default
   const location = useLocation();
 
   const navigate = useNavigate();
@@ -14,12 +13,7 @@ function Feedback() {
   const end_period = sessionStorage.getItem("end_period");
   const projectId = sessionStorage.getItem("projectId_timesheet");
 
-  useEffect(() => {
-    // if (!accessToken) {
-    //   navigate("/login");
-    // }
-    // console.log(decodedPID, decodedStart, decodedEnd)
-  }, [location.search]);
+  useEffect(() => {}, [location.search]);
 
   const [formData, setFormData] = useState({
     q1: 1,
@@ -70,26 +64,6 @@ function Feedback() {
     } catch (error) {
       console.error("Error submitting feedback:", error.message);
     }
-
-    // try {
-    //     const response = await fetch('http://localhost:5000/api/FeedbackHistory', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //             Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`
-    //         },
-    //         body: JSON.stringify({
-    //             projectId: projectId,
-    //             start_period: start_period,
-    //             end_period: end_period,
-    //             feedback_given: true
-    //         }),
-    //     });
-
-    // } catch (error) {
-    //     alert('Error updating feedback history:', error.message)
-    //     console.error('Error fetching timesheet data:', error);
-    // }
   };
 
   return (
